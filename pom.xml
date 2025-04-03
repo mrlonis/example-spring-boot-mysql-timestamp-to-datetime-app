@@ -8,9 +8,9 @@
     <relativePath/>
   </parent>
   <groupId>com.mrlonis.time</groupId>
-  <artifactId>joda-to-java-time</artifactId>
+  <artifactId>mysql-timestamp-to-datetime</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>example-spring-boot-joda-to-java-time-app</name>
+  <name>example-spring-boot-mysql-timestamp-to-datetime-app</name>
   <description>Demo project for Spring Boot</description>
   <properties>
     <cleanthat.vesion>2.20</cleanthat.vesion>
@@ -18,6 +18,7 @@
     <git-build-hook-maven-plugin.version>3.5.0</git-build-hook-maven-plugin.version>
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     <java.version>21</java.version>
+    <org.checkerframework.version>3.49.1</org.checkerframework.version>
     <palantir-java-format.version>2.61.0</palantir-java-format.version>
     <prettier.version>3.4.2</prettier.version>
     <spotless.version>2.44.3</spotless.version>
@@ -54,6 +55,11 @@
   </dependencyManagement>
   <dependencies>
     <dependency>
+      <groupId>org.checkerframework</groupId>
+      <artifactId>checker-qual</artifactId>
+      <version>${org.checkerframework.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.flywaydb</groupId>
       <artifactId>flyway-core</artifactId>
     </dependency>
@@ -74,6 +80,12 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.checkerframework</groupId>
+      <artifactId>checker</artifactId>
+      <version>${org.checkerframework.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
@@ -84,11 +96,6 @@
       <artifactId>spring-boot-configuration-processor</artifactId>
       <scope>provided</scope>
       <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.mysql</groupId>
@@ -141,6 +148,7 @@
                 <include>.mvn/wrapper/maven-wrapper.properties</include>
                 <include>.gitattributes</include>
                 <include>.gitignore</include>
+                <include>lombok.config</include>
                 <include>mvnw</include>
                 <include>mvnw.cmd</include>
               </includes>
@@ -217,6 +225,7 @@
               <lineSeparator>\n</lineSeparator>
               <keepBlankLines>false</keepBlankLines>
               <sortDependencies>scope,groupId,artifactId</sortDependencies>
+              <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
               <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
               <sortDependencyManagement>groupId,artifactId</sortDependencyManagement>
               <sortPlugins>groupId,artifactId</sortPlugins>
