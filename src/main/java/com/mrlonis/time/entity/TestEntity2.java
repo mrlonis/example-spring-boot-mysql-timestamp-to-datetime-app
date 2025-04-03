@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,14 +33,14 @@ public class TestEntity2 {
 
     @Column(name = "CREATED_DATETIME", nullable = false, insertable = false, updatable = false)
     @CreationTimestamp
-    private Timestamp createdDatetime;
+    private ZonedDateTime createdDatetime;
 
     @Column(name = "CREATED_USER", nullable = false, updatable = false)
     private String createdUser;
 
     @Column(name = "UPDATED_DATETIME", nullable = false, insertable = false)
     @UpdateTimestamp
-    private Timestamp updatedDatetime;
+    private ZonedDateTime updatedDatetime;
 
     @Column(name = "UPDATED_USER", nullable = false)
     private String updatedUser;
