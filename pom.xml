@@ -14,11 +14,11 @@
   <description>Demo project for Spring Boot</description>
   <properties>
     <cleanthat.vesion>2.20</cleanthat.vesion>
-    <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
+    <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
     <git-build-hook-maven-plugin.version>3.5.0</git-build-hook-maven-plugin.version>
-    <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
     <java.version>21</java.version>
-    <org.checkerframework.version>3.49.1</org.checkerframework.version>
+    <org.checkerframework.version>3.49.2</org.checkerframework.version>
     <palantir-java-format.version>2.61.0</palantir-java-format.version>
     <prettier.version>3.4.2</prettier.version>
     <spotless.version>2.44.3</spotless.version>
