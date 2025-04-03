@@ -34,3 +34,8 @@ avoid the MySQL `TIMESTAMP` column type's limitation of only being able to store
 This is a problem for applications that need to store dates outside of this range, such as historical data or future
 dates. The `DATETIME` column type does not have this limitation and can store dates from `1000-01-01 00:00:00` to
 `9999-12-31 23:59:59`.
+
+## Helpful Documentation
+
+- [Improved Testcontainers Support in Spring Boot 3.1](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1)
+- [Support for Date-Time Types in Connector/J 8.0](https://dev.mysql.com/blog-archive/support-for-date-time-types-in-connector-j-8-0/)
