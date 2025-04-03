@@ -147,6 +147,7 @@
                 <include>.mvn/wrapper/maven-wrapper.properties</include>
                 <include>.gitattributes</include>
                 <include>.gitignore</include>
+                <include>.gitmodules</include>
                 <include>lombok.config</include>
                 <include>mvnw</include>
                 <include>mvnw.cmd</include>
