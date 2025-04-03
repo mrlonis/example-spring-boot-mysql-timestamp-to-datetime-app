@@ -19,6 +19,7 @@
     <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     <java.version>21</java.version>
     <palantir-java-format.version>2.61.0</palantir-java-format.version>
+    <prettier.version>3.4.2</prettier.version>
     <spotless.version>2.44.3</spotless.version>
     <spring-cloud.version>2024.0.1</spring-cloud.version>
     <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
@@ -165,11 +166,10 @@
                 <devDependencyProperties>
                   <property>
                     <name>prettier</name>
-                    <value>3.4.2</value>
+                    <value>${prettier.version}</value>
                   </property>
                   <property>
                     <name>@prettier/plugin-xml</name>
-                    <!-- this could not be written in the simpler to write 'devDependencies' element due to the package name starting with @. -->
                     <value>3.4.1</value>
                   </property>
                 </devDependencyProperties>
@@ -178,7 +178,6 @@
                   <xmlSelfClosingSpace>false</xmlSelfClosingSpace>
                   <xmlSortAttributesByKey>true</xmlSortAttributesByKey>
                   <xmlWhitespaceSensitivity>strict</xmlWhitespaceSensitivity>
-                  <!-- Prettier v3 Only - Comma Delimited -->
                   <plugins>@prettier/plugin-xml</plugins>
                 </config>
               </prettier>
@@ -238,6 +237,28 @@
             <trimTrailingWhitespace/>
             <endWithNewline/>
           </markdown>
+          <sql>
+            <includes>
+              <include>src/**/*.sql</include>
+            </includes>
+            <prettier>
+              <npmInstallCache>true</npmInstallCache>
+              <devDependencyProperties>
+                <property>
+                  <name>prettier</name>
+                  <value>${prettier.version}</value>
+                </property>
+                <property>
+                  <name>prettier-plugin-sql</name>
+                  <value>0.18.1</value>
+                </property>
+              </devDependencyProperties>
+              <config>
+                <printWidth>120</printWidth>
+                <plugins>prettier-plugin-sql</plugins>
+              </config>
+            </prettier>
+          </sql>
         </configuration>
         <executions>
           <execution>
