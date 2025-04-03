@@ -1,6 +1,11 @@
 package com.mrlonis.time;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import com.mrlonis.time.repository.TestEntityRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -34,6 +39,12 @@ class ApplicationTests {
                 () -> "org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl");
     }
 
+    @Autowired
+    private TestEntityRepository repository;
+
     @Test
-    void contextLoads() {}
+    void contextLoads() {
+        var result = repository.findAll();
+        assertFalse(result.isEmpty());
+    }
 }
