@@ -1,7 +1,6 @@
 package com.mrlonis.time;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.mrlonis.time.repository.TestEntityRepository;
 import org.junit.jupiter.api.Test;
