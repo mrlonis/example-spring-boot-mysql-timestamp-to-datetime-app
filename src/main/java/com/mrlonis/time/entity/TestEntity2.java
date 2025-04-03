@@ -20,9 +20,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TEST_TABLE")
+@Table(name = "TEST_TABLE_2")
 @Entity
-public class TestEntity {
+public class TestEntity2 {
     @Id
     @Column(name = "ID", nullable = false, insertable = false, updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

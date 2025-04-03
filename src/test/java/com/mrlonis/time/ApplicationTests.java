@@ -2,7 +2,8 @@ package com.mrlonis.time;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import com.mrlonis.time.repository.TestEntityRepository;
+import com.mrlonis.time.repository.TestEntity1Repository;
+import com.mrlonis.time.repository.TestEntity2Repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -39,11 +40,17 @@ class ApplicationTests {
     }
 
     @Autowired
-    private TestEntityRepository repository;
+    private TestEntity1Repository repository1;
+
+    @Autowired
+    private TestEntity2Repository repository2;
 
     @Test
     void contextLoads() {
-        var result = repository.findAll();
-        assertFalse(result.isEmpty());
+        var result1 = repository1.findAll();
+        assertFalse(result1.isEmpty());
+
+        var result2 = repository2.findAll();
+        assertFalse(result2.isEmpty());
     }
 }
