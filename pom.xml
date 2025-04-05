@@ -149,6 +149,14 @@
                 <include>.gitignore</include>
                 <include>.gitmodules</include>
                 <include>lombok.config</include>
+                <include>mvnw</include>
+              </includes>
+              <trimTrailingWhitespace/>
+              <endWithNewline/>
+            </format>
+            <format>
+              <includes>
+                <include>mvnw.cmd</include>
               </includes>
               <trimTrailingWhitespace/>
               <endWithNewline/>

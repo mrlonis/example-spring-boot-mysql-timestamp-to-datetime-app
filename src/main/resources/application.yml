@@ -1,6 +1,9 @@
 spring:
   application:
     name: mysql-timestamp-to-datetime
+  docker:
+    compose:
+      enabled: false
   flyway:
     enabled: true
   jpa:
@@ -9,3 +12,18 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydatabase
+    username: myuser
+    password: secret
+  flyway:
+    user: root
+    password: verysecret
+  docker:
+    compose:
+      enabled: true
