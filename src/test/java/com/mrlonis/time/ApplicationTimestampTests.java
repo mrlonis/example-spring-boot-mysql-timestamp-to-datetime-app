@@ -13,10 +13,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest
-class JodaToJavaTimeApplicationTests {
+@ActiveProfiles("test-timestamp")
+class ApplicationTimestampTests {
     private static final String TEST_NAME = "Test Name";
     private static final String TEST_USER = "fakeuser";
 

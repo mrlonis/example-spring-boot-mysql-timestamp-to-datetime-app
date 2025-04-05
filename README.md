@@ -7,6 +7,10 @@
   * [Table of Contents](#table-of-contents)
   * [Description](#description)
   * [Motivation](#motivation)
+  * [Helpful Documentation](#helpful-documentation)
+  * [Prerequisites](#prerequisites)
+  * [Starting the Application (Local)](#starting-the-application-local)
+    * [Manually Starting the Application](#manually-starting-the-application)
 
 <!-- TOC -->
 
@@ -39,3 +43,40 @@ dates. The `DATETIME` column type does not have this limitation and can store da
 
 - [Improved Testcontainers Support in Spring Boot 3.1](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1)
 - [Support for Date-Time Types in Connector/J 8.0](https://dev.mysql.com/blog-archive/support-for-date-time-types-in-connector-j-8-0/)
+
+## Prerequisites
+
+- Java: 21
+  - Mac-OS: `brew install --cask temurin@21`
+  - Windows: `choco install temurin21`
+- Maven: 3.9.9
+  - Mac-OS: `brew install maven`
+  - Windows: `choco install maven`
+  - Alternative: Maven Wrapper (`./mvnw`)
+
+## Starting the Application (Local)
+
+Run the following command to start the application locally:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=local
+```
+
+This will start the application and automatically configure the database needed via the [compose.yaml](./compose.yaml)
+file.
+
+### Manually Starting the Application
+
+1. Start the MySQL database using Docker:
+
+   ```bash
+   docker compose up -D
+   ```
+2. Run the following command to start the application:
+
+   ```bash
+   ./mvnw spring-boot:run -Dspring-boot.run.profiles=local
+   ```
+
+**Note:** Notice the only difference is we are manually setting up the same docker database here, just manually
+ourselves rather than via the Spring Boot docker integration.

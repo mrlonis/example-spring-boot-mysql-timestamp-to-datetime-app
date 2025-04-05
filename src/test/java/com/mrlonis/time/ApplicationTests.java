@@ -1,47 +1,24 @@
 package com.mrlonis.time;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
+import com.mrlonis.time.entity.TestEntity1;
+import com.mrlonis.time.entity.TestEntity2;
 import com.mrlonis.time.repository.TestEntity1Repository;
 import com.mrlonis.time.repository.TestEntity2Repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.MySQLContainer;
-import org.testcontainers.junit.jupiter.Testcontainers;
+import org.springframework.context.annotation.Import;
 
-/**
- * This test class is used to test the application with a MySQL database using Testcontainers. It is very similar in
- * setup to the {@link JodaToJavaTimeApplicationTests JodaToJavaTimeApplicationTests} class. The difference is that this
- * test is a more "manual" approach to the Testcontainers setup, while the other one uses a
- * {@link ServiceConnection @ServiceConnection} annotation to automatically configure the database connection removing
- * the need for {@link DynamicPropertySource @DynamicPropertySource} used in this class.
- *
- * <p>This class will likely never be expanded and will eventually diverge from the other test class. It is here to show
- * how to set up a test with Testcontainers manually. The other test class is the preferred way to set up a test with
- * Testcontainers with Spring Boot 3.1+.
- */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Testcontainers
+@Import(TestcontainersConfiguration.class)
+@SpringBootTest
 class ApplicationTests {
-    static final MySQLContainer<?> MY_SQL_CONTAINER;
-
-    static {
-        MY_SQL_CONTAINER = new MySQLContainer<>("mysql:8.0");
-        MY_SQL_CONTAINER.start();
-    }
-
-    @DynamicPropertySource
-    static void configureTestProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", MY_SQL_CONTAINER::getJdbcUrl);
-        registry.add("spring.datasource.username", MY_SQL_CONTAINER::getUsername);
-        registry.add("spring.datasource.password", MY_SQL_CONTAINER::getPassword);
-    }
+    private static final String TEST_NAME = "Test Name";
+    private static final String TEST_USER = "fakeuser";
 
     @Autowired
     private TestEntity1Repository testEntity1Repository;
@@ -50,11 +27,38 @@ class ApplicationTests {
     private TestEntity2Repository testEntity2Repository;
 
     @Test
-    void contextLoads() {
-        var result1 = testEntity1Repository.findAll();
-        assertFalse(result1.isEmpty());
+    void testEntity1() {
+        var all = testEntity1Repository.findAll();
+        assertFalse(all.isEmpty());
+        assertEquals(1, all.size());
 
-        var result2 = testEntity2Repository.findAll();
-        assertFalse(result2.isEmpty());
+        var newEntity =
+                new TestEntity1().setName(TEST_NAME).setCreatedUser(TEST_USER).setUpdatedUser(TEST_USER);
+        assertNull(newEntity.getId());
+        assertNull(newEntity.getCreatedDatetime());
+        assertNull(newEntity.getUpdatedDatetime());
+
+        newEntity = testEntity1Repository.saveAndFlush(newEntity);
+        assertNotNull(newEntity.getId());
+        assertNotNull(newEntity.getCreatedDatetime());
+        assertNotNull(newEntity.getUpdatedDatetime());
+    }
+
+    @Test
+    void testEntity2() {
+        var all = testEntity2Repository.findAll();
+        assertFalse(all.isEmpty());
+        assertEquals(1, all.size());
+
+        var newEntity =
+                new TestEntity2().setName(TEST_NAME).setCreatedUser(TEST_USER).setUpdatedUser(TEST_USER);
+        assertNull(newEntity.getId());
+        assertNull(newEntity.getCreatedDatetime());
+        assertNull(newEntity.getUpdatedDatetime());
+
+        newEntity = testEntity2Repository.saveAndFlush(newEntity);
+        assertNotNull(newEntity.getId());
+        assertNotNull(newEntity.getCreatedDatetime());
+        assertNotNull(newEntity.getUpdatedDatetime());
     }
 }

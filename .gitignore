@@ -17,6 +17,13 @@ target/
 .idea/**
 !.idea/runConfigurations
 !.idea/runConfigurations/**
+!.idea/compiler.xml
+!.idea/dataSources.xml
+!.idea/encodings.xml
+!.idea/jarRepositories.xml
+!.idea/palantir-java-format.xml
+!.idea/sqldialects.xml
+!.idea/vcs.xml
 *.iws
 *.iml
 *.ipr
