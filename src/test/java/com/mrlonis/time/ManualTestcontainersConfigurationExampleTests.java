@@ -16,10 +16,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 /**
  * This test class is used to test the application with a MySQL database using Testcontainers. It is very similar in
- * setup to the {@link ApplicationTests JodaToJavaTimeApplicationTests} class. The difference is that this test is a
- * more "manual" approach to the Testcontainers setup, while the other one uses a
- * {@link ServiceConnection @ServiceConnection} annotation to automatically configure the database connection removing
- * the need for {@link DynamicPropertySource @DynamicPropertySource} used in this class.
+ * setup to the {@link ApplicationTests ApplicationTests} class. The difference is that this test is a more "manual"
+ * approach to the Testcontainers setup, while the other one uses a {@link ServiceConnection @ServiceConnection}
+ * annotation to automatically configure the database connection removing the need for
+ * {@link DynamicPropertySource @DynamicPropertySource} used in this class.
  *
  * <p>This class will likely never be expanded and will eventually diverge from the other test class. It is here to show
  * how to set up a test with Testcontainers manually. The other test class is the preferred way to set up a test with
