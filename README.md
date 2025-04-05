@@ -7,6 +7,7 @@
   * [Table of Contents](#table-of-contents)
   * [Description](#description)
   * [Motivation](#motivation)
+  * [Helpful Documentation](#helpful-documentation)
 
 <!-- TOC -->
 
