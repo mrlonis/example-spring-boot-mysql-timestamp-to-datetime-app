@@ -1,9 +1,6 @@
 spring:
   application:
     name: mysql-timestamp-to-datetime
-  datasource:
-    hikari:
-      driver-class-name: com.mysql.cj.jdbc.Driver
   docker:
     compose:
       enabled: false
