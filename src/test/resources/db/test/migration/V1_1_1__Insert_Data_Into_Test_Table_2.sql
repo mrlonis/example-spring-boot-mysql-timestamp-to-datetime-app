@@ -1,0 +1,4 @@
+INSERT INTO
+  TEST_TABLE_2 (NAME, CREATED_USER, UPDATED_USER)
+VALUES
+  ('Test Name 2', 'user2', 'user2');
