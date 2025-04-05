@@ -17,6 +17,7 @@ target/
 .idea/**
 !.idea/runConfigurations
 !.idea/runConfigurations/**
+!.idea/compiler.xml
 !.idea/dataSources.xml
 !.idea/encodings.xml
 !.idea/jarRepositories.xml
