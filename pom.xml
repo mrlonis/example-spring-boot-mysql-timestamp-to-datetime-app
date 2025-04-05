@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -191,18 +195,18 @@
             </format>
             <format>
               <includes>
-                <include>.github/**/*.yml</include>
-                <include>.mvn/**/*.xml</include>
-                <include>.vscode/**/*.json</include>
-                <include>src/**/*.json</include>
-                <include>src/**/*.html</include>
-                <include>src/**/*.xml</include>
-                <include>src/**/*.yaml</include>
-                <include>src/**/*.yml</include>
+                <include>**/*.json</include>
+                <include>**/*.html</include>
+                <include>**/*.xml</include>
+                <include>**/*.yaml</include>
+                <include>**/*.yml</include>
                 <include>.prettierrc</include>
-                <include>compose.yml</include>
-                <include>compose.yaml</include>
               </includes>
+              <excludes>
+                <exclude>.idea/**/*</exclude>
+                <exclude>.hooks/**/*</exclude>
+                <exclude>target/**/*</exclude>
+              </excludes>
               <prettier>
                 <npmInstallCache>true</npmInstallCache>
                 <devDependencyProperties>
@@ -272,8 +276,9 @@
               <include>**/*.md</include>
             </includes>
             <excludes>
-              <exclude>.hooks/**/*.md</exclude>
-              <exclude>target/**/*.md</exclude>
+              <exclude>.idea/**/*</exclude>
+              <exclude>.hooks/**/*</exclude>
+              <exclude>target/**/*</exclude>
             </excludes>
             <flexmark/>
             <trimTrailingWhitespace/>
@@ -281,8 +286,13 @@
           </markdown>
           <sql>
             <includes>
-              <include>src/**/*.sql</include>
+              <include>**/*.sql</include>
             </includes>
+            <excludes>
+              <exclude>.idea/**/*</exclude>
+              <exclude>.hooks/**/*</exclude>
+              <exclude>target/**/*</exclude>
+            </excludes>
             <prettier>
               <npmInstallCache>true</npmInstallCache>
               <devDependencyProperties>
