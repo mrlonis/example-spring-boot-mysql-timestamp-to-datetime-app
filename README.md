@@ -19,16 +19,12 @@
 ## Description
 
 This is a simple Spring Boot application that demonstrates how to convert a MySQL `TIMESTAMP` column to a MySQL
-`DATETIME` column. This is done on two identical tables, but with different Java data types for the datetime columns.
+`DATETIME` column. This is done on identical tables, but with different Java data types for the date-time columns.
 
-For [TestEntity1](./src/main/java/com/mrlonis/time/entity/TestEntity1.java), the `createdAt` and `updatedAt` fields are
-of type `java.sql.Timestamp`.
-
-For [TestEntity2](./src/main/java/com/mrlonis/time/entity/TestEntity2.java), the `createdAt` and `updatedAt` fields are
-of type `java.time.ZonedDateTime`.
+The classes can be found at [src/main/java/com/mrlonis/time/entity](./src/main/java/com/mrlonis/time/entity/package-info.java).
 
 What is interesting to note, is that regardless of the underlying MySQL column type, the Java data type used in the
-Spring Boot application is the same. This is because the MySQL JDBC driver handles the conversion between the two
+Spring Boot application is the same. This is because the MySQL JDBC driver handles the conversion between the
 data types.
 
 ## Motivation
