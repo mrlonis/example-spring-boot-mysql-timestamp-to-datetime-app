@@ -1,9 +1,8 @@
 package com.mrlonis.time.repository;
 
 import static com.mrlonis.time.util.TestData.getTestEntityOffsetDateTime;
+import static com.mrlonis.time.util.TestUtils.assertEntityCreation;
 import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.mrlonis.time.TestcontainersConfiguration;
 import org.junit.jupiter.api.Test;
@@ -20,15 +19,6 @@ class TestEntityOffsetDateTimeRepositoryTests {
     @Test
     void testEntity() {
         assertInitialRepositoryConditions(repository);
-
-        var newEntity = getTestEntityOffsetDateTime();
-        assertNull(newEntity.getId());
-        assertNull(newEntity.getCreatedDatetime());
-        assertNull(newEntity.getUpdatedDatetime());
-
-        newEntity = repository.saveAndFlush(newEntity);
-        assertNotNull(newEntity.getId());
-        assertNotNull(newEntity.getCreatedDatetime());
-        assertNotNull(newEntity.getUpdatedDatetime());
+        assertEntityCreation(getTestEntityOffsetDateTime(), repository);
     }
 }

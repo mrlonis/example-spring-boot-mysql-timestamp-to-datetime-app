@@ -5,15 +5,9 @@ import static com.mrlonis.time.util.TestData.getTestEntityDate;
 import static com.mrlonis.time.util.TestData.getTestEntityOffsetDateTime;
 import static com.mrlonis.time.util.TestData.getTestEntityTimestamp;
 import static com.mrlonis.time.util.TestData.getTestEntityZonedDateTime;
+import static com.mrlonis.time.util.TestUtils.assertEntityCreation;
 import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
-import com.mrlonis.time.entity.TestEntityCalendar;
-import com.mrlonis.time.entity.TestEntityDate;
-import com.mrlonis.time.entity.TestEntityOffsetDateTime;
-import com.mrlonis.time.entity.TestEntityTimestamp;
-import com.mrlonis.time.entity.TestEntityZonedDateTime;
 import com.mrlonis.time.repository.TestEntityCalendarRepository;
 import com.mrlonis.time.repository.TestEntityDateRepository;
 import com.mrlonis.time.repository.TestEntityOffsetDateTimeRepository;
@@ -54,75 +48,30 @@ class ApplicationTimestampTests {
     @Test
     void testEntityCalendar() {
         assertInitialRepositoryConditions(testEntityCalendarRepository);
-
-        TestEntityCalendar newEntity = getTestEntityCalendar();
-        assertNull(newEntity.getId());
-        assertNull(newEntity.getCreatedDatetime());
-        assertNull(newEntity.getUpdatedDatetime());
-
-        newEntity = testEntityCalendarRepository.saveAndFlush(newEntity);
-        assertNotNull(newEntity.getId());
-        assertNotNull(newEntity.getCreatedDatetime());
-        assertNotNull(newEntity.getUpdatedDatetime());
+        assertEntityCreation(getTestEntityCalendar(), testEntityCalendarRepository);
     }
 
     @Test
     void testEntityDate() {
         assertInitialRepositoryConditions(testEntityDateRepository);
-
-        TestEntityDate newEntity = getTestEntityDate();
-        assertNull(newEntity.getId());
-        assertNull(newEntity.getCreatedDatetime());
-        assertNull(newEntity.getUpdatedDatetime());
-
-        newEntity = testEntityDateRepository.saveAndFlush(newEntity);
-        assertNotNull(newEntity.getId());
-        assertNotNull(newEntity.getCreatedDatetime());
-        assertNotNull(newEntity.getUpdatedDatetime());
+        assertEntityCreation(getTestEntityDate(), testEntityDateRepository);
     }
 
     @Test
     void testEntityOffsetDateTime() {
         assertInitialRepositoryConditions(testEntityOffsetDateTimeRepository);
-
-        TestEntityOffsetDateTime newEntity = getTestEntityOffsetDateTime();
-        assertNull(newEntity.getId());
-        assertNull(newEntity.getCreatedDatetime());
-        assertNull(newEntity.getUpdatedDatetime());
-
-        newEntity = testEntityOffsetDateTimeRepository.saveAndFlush(newEntity);
-        assertNotNull(newEntity.getId());
-        assertNotNull(newEntity.getCreatedDatetime());
-        assertNotNull(newEntity.getUpdatedDatetime());
+        assertEntityCreation(getTestEntityOffsetDateTime(), testEntityOffsetDateTimeRepository);
     }
 
     @Test
     void testEntityTimestamp() {
         assertInitialRepositoryConditions(testEntityTimestampRepository);
-
-        TestEntityTimestamp newEntity = getTestEntityTimestamp();
-        assertNull(newEntity.getId());
-        assertNull(newEntity.getCreatedDatetime());
-        assertNull(newEntity.getUpdatedDatetime());
-
-        newEntity = testEntityTimestampRepository.saveAndFlush(newEntity);
-        assertNotNull(newEntity.getId());
-        assertNotNull(newEntity.getCreatedDatetime());
-        assertNotNull(newEntity.getUpdatedDatetime());
+        assertEntityCreation(getTestEntityTimestamp(), testEntityTimestampRepository);
     }
 
     @Test
     void testEntityZonedDateTime() {
         assertInitialRepositoryConditions(testEntityZonedDateTimeRepository);
-
-        TestEntityZonedDateTime newEntity = getTestEntityZonedDateTime();
-        assertNull(newEntity.getId());
-        assertNull(newEntity.getCreatedDatetime());
-        assertNull(newEntity.getUpdatedDatetime());
-
-        newEntity = testEntityZonedDateTimeRepository.saveAndFlush(newEntity);
-        assertNotNull(newEntity.getId());
-        assertNotNull(newEntity.getCreatedDatetime());
-        assertNotNull(newEntity.getUpdatedDatetime());
+        assertEntityCreation(getTestEntityZonedDateTime(), testEntityZonedDateTimeRepository);
     }
 }

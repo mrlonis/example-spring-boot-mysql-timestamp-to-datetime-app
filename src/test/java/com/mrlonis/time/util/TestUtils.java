@@ -12,14 +12,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 @UtilityClass
 public class TestUtils {
-    public static <T extends BaseEntity, R extends JpaRepository<T, Long>> void assertInitialRepositoryConditions(
+    public static <D, T extends BaseEntity<D>, R extends JpaRepository<T, Long>> void assertInitialRepositoryConditions(
             R repository) {
         List<T> all = repository.findAll();
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
     }
 
-    public static <T extends BaseEntity, R extends JpaRepository<T, Long>> void assertEntityCreation(
+    public static <D, T extends BaseEntity<D>, R extends JpaRepository<T, Long>> void assertEntityCreation(
             T entity, R repository) {
         assertNull(entity.getId());
         assertNull(entity.getCreatedDatetime());
