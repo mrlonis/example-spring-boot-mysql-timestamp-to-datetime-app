@@ -28,7 +28,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TEST_TABLE_1")
+@Table(name = "TEST_ENTITY_TIMESTAMP")
 @Entity
 public class TestEntityTimestamp {
     @Id
