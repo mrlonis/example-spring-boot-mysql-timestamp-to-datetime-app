@@ -28,6 +28,12 @@ public abstract class BaseEntity<T> {
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    @Column(name = "TYPE", nullable = false, columnDefinition = "char(4)")
+    private String type;
+
+    @Column(name = "CODE", columnDefinition = "char(4)")
+    private String code;
+
     @Column(name = "CREATED_DATETIME", nullable = false, insertable = false, updatable = false)
     @CreationTimestamp
     private T createdDatetime;
