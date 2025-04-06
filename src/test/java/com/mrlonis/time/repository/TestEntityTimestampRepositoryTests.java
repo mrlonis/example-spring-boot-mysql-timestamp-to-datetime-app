@@ -1,5 +1,7 @@
 package com.mrlonis.time.repository;
 
+import static com.mrlonis.time.TestConstants.TEST_NAME;
+import static com.mrlonis.time.TestConstants.TEST_USER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -15,15 +17,12 @@ import org.springframework.context.annotation.Import;
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest
 class TestEntityTimestampRepositoryTests {
-    private static final String TEST_NAME = "Test Name";
-    private static final String TEST_USER = "fakeuser";
-
     @Autowired
-    private TestEntityTimestampRepository testEntityTimestampRepository;
+    private TestEntityTimestampRepository repository;
 
     @Test
-    void testEntity1() {
-        var all = testEntityTimestampRepository.findAll();
+    void testEntity() {
+        var all = repository.findAll();
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
@@ -35,7 +34,7 @@ class TestEntityTimestampRepositoryTests {
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
 
-        newEntity = testEntityTimestampRepository.saveAndFlush(newEntity);
+        newEntity = repository.saveAndFlush(newEntity);
         assertNotNull(newEntity.getId());
         assertNotNull(newEntity.getCreatedDatetime());
         assertNotNull(newEntity.getUpdatedDatetime());

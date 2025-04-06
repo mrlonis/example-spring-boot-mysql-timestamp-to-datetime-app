@@ -2,8 +2,17 @@ package com.mrlonis.time;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import com.mrlonis.time.entity.TestEntityCalendar;
+import com.mrlonis.time.entity.TestEntityDate;
+import com.mrlonis.time.entity.TestEntityOffsetDateTime;
+import com.mrlonis.time.entity.TestEntityTimestamp;
+import com.mrlonis.time.entity.TestEntityZonedDateTime;
+import com.mrlonis.time.repository.TestEntityCalendarRepository;
+import com.mrlonis.time.repository.TestEntityDateRepository;
+import com.mrlonis.time.repository.TestEntityOffsetDateTimeRepository;
 import com.mrlonis.time.repository.TestEntityTimestampRepository;
 import com.mrlonis.time.repository.TestEntityZonedDateTimeRepository;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -44,6 +53,15 @@ class ManualTestcontainersConfigurationExampleTests {
     }
 
     @Autowired
+    private TestEntityCalendarRepository testEntityCalendarRepository;
+
+    @Autowired
+    private TestEntityDateRepository testEntityDateRepository;
+
+    @Autowired
+    private TestEntityOffsetDateTimeRepository testEntityOffsetDateTimeRepository;
+
+    @Autowired
     private TestEntityTimestampRepository testEntityTimestampRepository;
 
     @Autowired
@@ -51,10 +69,19 @@ class ManualTestcontainersConfigurationExampleTests {
 
     @Test
     void contextLoads() {
-        var result1 = testEntityTimestampRepository.findAll();
-        assertFalse(result1.isEmpty());
+        List<TestEntityCalendar> testEntityCalendars = testEntityCalendarRepository.findAll();
+        assertFalse(testEntityCalendars.isEmpty());
 
-        var result2 = testEntityZonedDateTimeRepository.findAll();
-        assertFalse(result2.isEmpty());
+        List<TestEntityDate> testEntityDates = testEntityDateRepository.findAll();
+        assertFalse(testEntityDates.isEmpty());
+
+        List<TestEntityOffsetDateTime> testEntityOffsetDateTimes = testEntityOffsetDateTimeRepository.findAll();
+        assertFalse(testEntityOffsetDateTimes.isEmpty());
+
+        List<TestEntityTimestamp> testEntityTimestamps = testEntityTimestampRepository.findAll();
+        assertFalse(testEntityTimestamps.isEmpty());
+
+        List<TestEntityZonedDateTime> testEntityZonedDateTimes = testEntityZonedDateTimeRepository.findAll();
+        assertFalse(testEntityZonedDateTimes.isEmpty());
     }
 }

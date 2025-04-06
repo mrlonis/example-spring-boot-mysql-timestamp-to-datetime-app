@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.mrlonis.time.TestcontainersConfiguration;
-import com.mrlonis.time.entity.TestEntityZonedDateTime;
+import com.mrlonis.time.entity.TestEntityDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,9 +16,9 @@ import org.springframework.context.annotation.Import;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest
-class TestEntityZonedDateTimeRepositoryTests {
+class TestEntityDateRepositoryTests {
     @Autowired
-    private TestEntityZonedDateTimeRepository repository;
+    private TestEntityDateRepository repository;
 
     @Test
     void testEntity() {
@@ -26,7 +26,7 @@ class TestEntityZonedDateTimeRepositoryTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        var newEntity = new TestEntityZonedDateTime()
+        var newEntity = new TestEntityDate()
                 .setName(TEST_NAME)
                 .setCreatedUser(TEST_USER)
                 .setUpdatedUser(TEST_USER);
