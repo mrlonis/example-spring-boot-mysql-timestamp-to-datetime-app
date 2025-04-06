@@ -1,18 +1,12 @@
 package com.mrlonis.time;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
 
-import com.mrlonis.time.entity.TestEntityCalendar;
-import com.mrlonis.time.entity.TestEntityDate;
-import com.mrlonis.time.entity.TestEntityOffsetDateTime;
-import com.mrlonis.time.entity.TestEntityTimestamp;
-import com.mrlonis.time.entity.TestEntityZonedDateTime;
 import com.mrlonis.time.repository.TestEntityCalendarRepository;
 import com.mrlonis.time.repository.TestEntityDateRepository;
 import com.mrlonis.time.repository.TestEntityOffsetDateTimeRepository;
 import com.mrlonis.time.repository.TestEntityTimestampRepository;
 import com.mrlonis.time.repository.TestEntityZonedDateTimeRepository;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -69,19 +63,10 @@ class ManualTestcontainersConfigurationExampleTests {
 
     @Test
     void contextLoads() {
-        List<TestEntityCalendar> testEntityCalendars = testEntityCalendarRepository.findAll();
-        assertFalse(testEntityCalendars.isEmpty());
-
-        List<TestEntityDate> testEntityDates = testEntityDateRepository.findAll();
-        assertFalse(testEntityDates.isEmpty());
-
-        List<TestEntityOffsetDateTime> testEntityOffsetDateTimes = testEntityOffsetDateTimeRepository.findAll();
-        assertFalse(testEntityOffsetDateTimes.isEmpty());
-
-        List<TestEntityTimestamp> testEntityTimestamps = testEntityTimestampRepository.findAll();
-        assertFalse(testEntityTimestamps.isEmpty());
-
-        List<TestEntityZonedDateTime> testEntityZonedDateTimes = testEntityZonedDateTimeRepository.findAll();
-        assertFalse(testEntityZonedDateTimes.isEmpty());
+        assertInitialRepositoryConditions(testEntityCalendarRepository);
+        assertInitialRepositoryConditions(testEntityDateRepository);
+        assertInitialRepositoryConditions(testEntityOffsetDateTimeRepository);
+        assertInitialRepositoryConditions(testEntityTimestampRepository);
+        assertInitialRepositoryConditions(testEntityZonedDateTimeRepository);
     }
 }

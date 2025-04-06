@@ -1,9 +1,11 @@
 package com.mrlonis.time;
 
-import static com.mrlonis.time.TestConstants.TEST_NAME;
-import static com.mrlonis.time.TestConstants.TEST_USER;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static com.mrlonis.time.util.TestData.getTestEntityCalendar;
+import static com.mrlonis.time.util.TestData.getTestEntityDate;
+import static com.mrlonis.time.util.TestData.getTestEntityOffsetDateTime;
+import static com.mrlonis.time.util.TestData.getTestEntityTimestamp;
+import static com.mrlonis.time.util.TestData.getTestEntityZonedDateTime;
+import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -17,7 +19,6 @@ import com.mrlonis.time.repository.TestEntityDateRepository;
 import com.mrlonis.time.repository.TestEntityOffsetDateTimeRepository;
 import com.mrlonis.time.repository.TestEntityTimestampRepository;
 import com.mrlonis.time.repository.TestEntityZonedDateTimeRepository;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -52,15 +53,9 @@ class ApplicationTimestampTests {
 
     @Test
     void testEntityCalendar() {
-        List<TestEntityCalendar> all = testEntityCalendarRepository.findAll();
-        assertFalse(all.isEmpty());
-        assertEquals(1, all.size());
+        assertInitialRepositoryConditions(testEntityCalendarRepository);
 
-        TestEntityCalendar newEntity = TestEntityCalendar.builder()
-                .name(TEST_NAME)
-                .createdUser(TEST_USER)
-                .updatedUser(TEST_USER)
-                .build();
+        TestEntityCalendar newEntity = getTestEntityCalendar();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -73,15 +68,9 @@ class ApplicationTimestampTests {
 
     @Test
     void testEntityDate() {
-        List<TestEntityDate> all = testEntityDateRepository.findAll();
-        assertFalse(all.isEmpty());
-        assertEquals(1, all.size());
+        assertInitialRepositoryConditions(testEntityDateRepository);
 
-        TestEntityDate newEntity = TestEntityDate.builder()
-                .name(TEST_NAME)
-                .createdUser(TEST_USER)
-                .updatedUser(TEST_USER)
-                .build();
+        TestEntityDate newEntity = getTestEntityDate();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -94,15 +83,9 @@ class ApplicationTimestampTests {
 
     @Test
     void testEntityOffsetDateTime() {
-        List<TestEntityOffsetDateTime> all = testEntityOffsetDateTimeRepository.findAll();
-        assertFalse(all.isEmpty());
-        assertEquals(1, all.size());
+        assertInitialRepositoryConditions(testEntityOffsetDateTimeRepository);
 
-        TestEntityOffsetDateTime newEntity = TestEntityOffsetDateTime.builder()
-                .name(TEST_NAME)
-                .createdUser(TEST_USER)
-                .updatedUser(TEST_USER)
-                .build();
+        TestEntityOffsetDateTime newEntity = getTestEntityOffsetDateTime();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -115,15 +98,9 @@ class ApplicationTimestampTests {
 
     @Test
     void testEntityTimestamp() {
-        List<TestEntityTimestamp> all = testEntityTimestampRepository.findAll();
-        assertFalse(all.isEmpty());
-        assertEquals(1, all.size());
+        assertInitialRepositoryConditions(testEntityTimestampRepository);
 
-        TestEntityTimestamp newEntity = TestEntityTimestamp.builder()
-                .name(TEST_NAME)
-                .createdUser(TEST_USER)
-                .updatedUser(TEST_USER)
-                .build();
+        TestEntityTimestamp newEntity = getTestEntityTimestamp();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -136,15 +113,9 @@ class ApplicationTimestampTests {
 
     @Test
     void testEntityZonedDateTime() {
-        List<TestEntityZonedDateTime> all = testEntityZonedDateTimeRepository.findAll();
-        assertFalse(all.isEmpty());
-        assertEquals(1, all.size());
+        assertInitialRepositoryConditions(testEntityZonedDateTimeRepository);
 
-        TestEntityZonedDateTime newEntity = TestEntityZonedDateTime.builder()
-                .name(TEST_NAME)
-                .createdUser(TEST_USER)
-                .updatedUser(TEST_USER)
-                .build();
+        TestEntityZonedDateTime newEntity = getTestEntityZonedDateTime();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());

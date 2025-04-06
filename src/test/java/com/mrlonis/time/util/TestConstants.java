@@ -1,4 +1,4 @@
-package com.mrlonis.time;
+package com.mrlonis.time.util;
 
 import lombok.experimental.UtilityClass;
 

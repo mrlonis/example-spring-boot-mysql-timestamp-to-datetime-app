@@ -1,14 +1,11 @@
 package com.mrlonis.time.repository;
 
-import static com.mrlonis.time.TestConstants.TEST_NAME;
-import static com.mrlonis.time.TestConstants.TEST_USER;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static com.mrlonis.time.util.TestData.getTestEntityDate;
+import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.mrlonis.time.TestcontainersConfiguration;
-import com.mrlonis.time.entity.TestEntityDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,15 +19,9 @@ class TestEntityDateRepositoryTests {
 
     @Test
     void testEntity() {
-        var all = repository.findAll();
-        assertFalse(all.isEmpty());
-        assertEquals(1, all.size());
+        assertInitialRepositoryConditions(repository);
 
-        var newEntity = TestEntityDate.builder()
-                .name(TEST_NAME)
-                .createdUser(TEST_USER)
-                .updatedUser(TEST_USER)
-                .build();
+        var newEntity = getTestEntityDate();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
