@@ -77,10 +77,11 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        TestEntityDate newEntity = new TestEntityDate()
-                .setName(TEST_NAME)
-                .setCreatedUser(TEST_USER)
-                .setUpdatedUser(TEST_USER);
+        TestEntityDate newEntity = TestEntityDate.builder()
+                .name(TEST_NAME)
+                .createdUser(TEST_USER)
+                .updatedUser(TEST_USER)
+                .build();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -97,10 +98,11 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        TestEntityOffsetDateTime newEntity = new TestEntityOffsetDateTime()
-                .setName(TEST_NAME)
-                .setCreatedUser(TEST_USER)
-                .setUpdatedUser(TEST_USER);
+        TestEntityOffsetDateTime newEntity = TestEntityOffsetDateTime.builder()
+                .name(TEST_NAME)
+                .createdUser(TEST_USER)
+                .updatedUser(TEST_USER)
+                .build();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -117,10 +119,11 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        TestEntityTimestamp newEntity = new TestEntityTimestamp()
-                .setName(TEST_NAME)
-                .setCreatedUser(TEST_USER)
-                .setUpdatedUser(TEST_USER);
+        TestEntityTimestamp newEntity = TestEntityTimestamp.builder()
+                .name(TEST_NAME)
+                .createdUser(TEST_USER)
+                .updatedUser(TEST_USER)
+                .build();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -137,10 +140,11 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        TestEntityZonedDateTime newEntity = new TestEntityZonedDateTime()
-                .setName(TEST_NAME)
-                .setCreatedUser(TEST_USER)
-                .setUpdatedUser(TEST_USER);
+        TestEntityZonedDateTime newEntity = TestEntityZonedDateTime.builder()
+                .name(TEST_NAME)
+                .createdUser(TEST_USER)
+                .updatedUser(TEST_USER)
+                .build();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());

@@ -26,10 +26,11 @@ class TestEntityDateRepositoryTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        var newEntity = new TestEntityDate()
-                .setName(TEST_NAME)
-                .setCreatedUser(TEST_USER)
-                .setUpdatedUser(TEST_USER);
+        var newEntity = TestEntityDate.builder()
+                .name(TEST_NAME)
+                .createdUser(TEST_USER)
+                .updatedUser(TEST_USER)
+                .build();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());

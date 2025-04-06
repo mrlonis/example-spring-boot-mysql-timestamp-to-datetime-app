@@ -23,7 +23,7 @@ import org.hibernate.annotations.UpdateTimestamp;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 @Table(name = "TEST_ENTITY_CALENDAR")
 @Entity
 @NoArgsConstructor
