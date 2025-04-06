@@ -33,8 +33,8 @@ public class TestData {
         return addBaseEntityFields(TestEntityZonedDateTime.builder()).build();
     }
 
-    private static <T extends BaseEntity, B extends BaseEntity.BaseEntityBuilder<T, B>> B addBaseEntityFields(
-            BaseEntity.BaseEntityBuilder<T, B> builder) {
+    private static <D, T extends BaseEntity<D>, B extends BaseEntity.BaseEntityBuilder<D, T, B>> B addBaseEntityFields(
+            BaseEntity.BaseEntityBuilder<D, T, B> builder) {
         return builder.name(TEST_NAME).createdUser(TEST_USER).updatedUser(TEST_USER);
     }
 }

@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
@@ -17,7 +19,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @MappedSuperclass
-public abstract class BaseEntity {
+public abstract class BaseEntity<T> {
     @Id
     @Column(name = "ID", nullable = false, insertable = false, updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +28,16 @@ public abstract class BaseEntity {
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    @Column(name = "CREATED_DATETIME", nullable = false, insertable = false, updatable = false)
+    @CreationTimestamp
+    private T createdDatetime;
+
     @Column(name = "CREATED_USER", nullable = false, updatable = false)
     private String createdUser;
+
+    @Column(name = "UPDATED_DATETIME", nullable = false, insertable = false)
+    @UpdateTimestamp
+    private T updatedDatetime;
 
     @Column(name = "UPDATED_USER", nullable = false)
     private String updatedUser;

@@ -1,7 +1,6 @@
 package com.mrlonis.time.entity;
 
 import com.mrlonis.time.entity.base.BaseEntity;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import java.time.OffsetDateTime;
@@ -10,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  * This is a test entity that is used to test the application. It uses {@link OffsetDateTime java.time.OffsetDateTime}
@@ -28,12 +25,4 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Entity
 @NoArgsConstructor
 @SuperBuilder
-public class TestEntityOffsetDateTime extends BaseEntity {
-    @Column(name = "CREATED_DATETIME", nullable = false, insertable = false, updatable = false)
-    @CreationTimestamp
-    private OffsetDateTime createdDatetime;
-
-    @Column(name = "UPDATED_DATETIME", nullable = false, insertable = false)
-    @UpdateTimestamp
-    private OffsetDateTime updatedDatetime;
-}
+public class TestEntityOffsetDateTime extends BaseEntity<OffsetDateTime> {}
