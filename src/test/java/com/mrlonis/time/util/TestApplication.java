@@ -1,5 +1,6 @@
-package com.mrlonis.time;
+package com.mrlonis.time.util;
 
+import com.mrlonis.time.Application;
 import org.springframework.boot.SpringApplication;
 
 /**

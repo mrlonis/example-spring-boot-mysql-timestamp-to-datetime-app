@@ -1,4 +1,4 @@
-package com.mrlonis.time;
+package com.mrlonis.time.util;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

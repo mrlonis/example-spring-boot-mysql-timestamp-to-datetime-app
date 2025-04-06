@@ -4,7 +4,7 @@ import static com.mrlonis.time.util.TestData.getTestEntityOffsetDateTime;
 import static com.mrlonis.time.util.TestUtils.assertEntityCreation;
 import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
 
-import com.mrlonis.time.TestcontainersConfiguration;
+import com.mrlonis.time.util.TestcontainersConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
