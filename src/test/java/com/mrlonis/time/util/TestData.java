@@ -1,6 +1,8 @@
 package com.mrlonis.time.util;
 
+import static com.mrlonis.time.util.TestConstants.TEST_CODE;
 import static com.mrlonis.time.util.TestConstants.TEST_NAME;
+import static com.mrlonis.time.util.TestConstants.TEST_TYPE;
 import static com.mrlonis.time.util.TestConstants.TEST_USER;
 
 import com.mrlonis.time.entity.TestEntityCalendar;
@@ -35,6 +37,10 @@ public class TestData {
 
     private static <D, T extends BaseEntity<D>, B extends BaseEntity.BaseEntityBuilder<D, T, B>> B addBaseEntityFields(
             BaseEntity.BaseEntityBuilder<D, T, B> builder) {
-        return builder.name(TEST_NAME).createdUser(TEST_USER).updatedUser(TEST_USER);
+        return builder.name(TEST_NAME)
+                .type(TEST_TYPE)
+                .code(TEST_CODE)
+                .createdUser(TEST_USER)
+                .updatedUser(TEST_USER);
     }
 }
