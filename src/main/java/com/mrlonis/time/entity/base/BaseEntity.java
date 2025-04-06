@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -20,31 +22,46 @@ import org.hibernate.annotations.UpdateTimestamp;
 @SuperBuilder
 @MappedSuperclass
 public abstract class BaseEntity<T> {
+    /**
+     * Marked with {@link Nullable} is technically null when creating a new entity prior to persisting it. This field is
+     * always created for us by the database, so it is not set by the application. After creation, the ID field will be
+     * non-null.
+     */
     @Id
     @Column(name = "ID", nullable = false, insertable = false, updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Nullable private Long id;
 
     @Column(name = "NAME", nullable = false)
-    private String name;
+    @NonNull private String name;
 
     @Column(name = "TYPE", nullable = false, columnDefinition = "char(4)")
-    private String type;
+    @NonNull private String type;
 
     @Column(name = "CODE", columnDefinition = "char(4)")
-    private String code;
+    @Nullable private String code;
 
+    /**
+     * Marked with {@link Nullable} is technically null when creating a new entity prior to persisting it. This field is
+     * always created for us by the database, so it is not set by the application. After creation, the ID field will be
+     * non-null.
+     */
     @Column(name = "CREATED_DATETIME", nullable = false, insertable = false, updatable = false)
     @CreationTimestamp
-    private T createdDatetime;
+    @Nullable private T createdDatetime;
 
     @Column(name = "CREATED_USER", nullable = false, updatable = false)
-    private String createdUser;
+    @NonNull private String createdUser;
 
+    /**
+     * Marked with {@link Nullable} is technically null when creating a new entity prior to persisting it. This field is
+     * always created for us by the database, so it is not set by the application. After creation, the ID field will be
+     * non-null.
+     */
     @Column(name = "UPDATED_DATETIME", nullable = false, insertable = false)
     @UpdateTimestamp
-    private T updatedDatetime;
+    @Nullable private T updatedDatetime;
 
     @Column(name = "UPDATED_USER", nullable = false)
-    private String updatedUser;
+    @NonNull private String updatedUser;
 }
