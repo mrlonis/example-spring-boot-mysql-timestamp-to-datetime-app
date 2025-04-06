@@ -85,7 +85,7 @@ ourselves rather than via the Spring Boot docker integration.
 
 If you receive an error similar to the
 following: [https://stackoverflow.com/questions/64101683/spring-boot-unable-to-communicate-with-mysql-db-in-docker-environment](https://stackoverflow.com/questions/64101683/spring-boot-unable-to-communicate-with-mysql-db-in-docker-environment),
-then you may need edit your `/etc/hosts` file.
+then you may need to edit your `/etc/hosts` file.
 
 Solution: [https://stackoverflow.com/questions/72346784/docker-is-inaccessible-on-localhost-but-works-fine-on-127-0-0-1](https://stackoverflow.com/questions/72346784/docker-is-inaccessible-on-localhost-but-works-fine-on-127-0-0-1)
 
