@@ -6,11 +6,13 @@
 * [example-spring-boot-mysql-timestamp-to-datetime-app](#example-spring-boot-mysql-timestamp-to-datetime-app)
   * [Table of Contents](#table-of-contents)
   * [Description](#description)
-  * [Motivation](#motivation)
-  * [Helpful Documentation](#helpful-documentation)
-  * [Prerequisites](#prerequisites)
-  * [Starting the Application (Local)](#starting-the-application-local)
-    * [Manually Starting the Application](#manually-starting-the-application)
+    * [Motivation](#motivation)
+    * [Helpful Documentation](#helpful-documentation)
+    * [MySQL Versions Tested](#mysql-versions-tested)
+  * [Contributing](#contributing)
+    * [Prerequisites](#prerequisites)
+    * [Starting the Application (Local)](#starting-the-application-local)
+      * [Manually Starting the Application](#manually-starting-the-application)
   * [Troubleshooting](#troubleshooting)
     * [Unable to Obtain Database Connection](#unable-to-obtain-database-connection)
 
@@ -28,7 +30,7 @@ What is interesting to note, is that regardless of the underlying MySQL column t
 Spring Boot application is the same. This is because the MySQL JDBC driver handles the conversion between the
 data types.
 
-## Motivation
+### Motivation
 
 The motivation for this project is to demonstrate how to convert a MySQL `TIMESTAMP` column to a MySQL `DATETIME` to
 avoid the MySQL `TIMESTAMP` column type's limitation of only being able to store dates in the range of
@@ -45,14 +47,29 @@ before you joined the team. Ideally, on a new project, you would use `DATETIME` 
 this repository can server as not only an example of `HOW` to convert a `TIMESTAMP` column to a `DATETIME`, but also
 as proof that it can be done and is safe to do so.
 
-## Helpful Documentation
+### Helpful Documentation
 
 - [Improved Testcontainers Support in Spring Boot 3.1](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1)
 - [Support for Date-Time Types in Connector/J 8.0](https://dev.mysql.com/blog-archive/support-for-date-time-types-in-connector-j-8-0/)
 - [MySQL - Date and Time Data Types](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-types.html)
 - [Docker - mysql](https://hub.docker.com/_/mysql)
 
-## Prerequisites
+### MySQL Versions Tested
+
+The versions of MySQL tested are as follows:
+
+- `5.7.x`
+- `8.0.x`
+- `8.x`
+- `9.x`
+- `LTS`
+- `Latest`
+
+[Unit Test Source Code](./src/test/java/com/mrlonis/time/ApplicationTests.java)
+
+## Contributing
+
+### Prerequisites
 
 - Java: 21
   - Mac-OS: `brew install --cask temurin@21`
@@ -62,7 +79,7 @@ as proof that it can be done and is safe to do so.
   - Windows: `choco install maven`
   - Alternative: Maven Wrapper (`./mvnw`)
 
-## Starting the Application (Local)
+### Starting the Application (Local)
 
 Run the following command to start the application locally:
 
@@ -73,7 +90,7 @@ Run the following command to start the application locally:
 This will start the application and automatically configure the database needed via the [compose.yaml](./compose.yaml)
 file.
 
-### Manually Starting the Application
+#### Manually Starting the Application
 
 1. Start the MySQL database using Docker:
 
