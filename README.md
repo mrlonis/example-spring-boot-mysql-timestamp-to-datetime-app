@@ -50,6 +50,7 @@ as proof that it can be done and is safe to do so.
 - [Improved Testcontainers Support in Spring Boot 3.1](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1)
 - [Support for Date-Time Types in Connector/J 8.0](https://dev.mysql.com/blog-archive/support-for-date-time-types-in-connector-j-8-0/)
 - [MySQL - Date and Time Data Types](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-types.html)
+- [Docker - mysql](https://hub.docker.com/_/mysql)
 
 ## Prerequisites
 

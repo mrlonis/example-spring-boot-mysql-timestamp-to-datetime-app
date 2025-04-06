@@ -13,7 +13,7 @@ import com.mrlonis.time.repository.TestEntityDateRepository;
 import com.mrlonis.time.repository.TestEntityOffsetDateTimeRepository;
 import com.mrlonis.time.repository.TestEntityTimestampRepository;
 import com.mrlonis.time.repository.TestEntityZonedDateTimeRepository;
-import com.mrlonis.time.util.TestcontainersConfiguration;
+import com.mrlonis.time.util.TestcontainersConfigurations;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +27,7 @@ import org.springframework.test.context.ActiveProfiles;
  * the application code can remain completely unchanged and still work against the database regardless of what the
  * underlying datetime data type is being using in the database table.
  */
-@Import(TestcontainersConfiguration.class)
+@Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL8_0.class)
 @SpringBootTest
 @ActiveProfiles("test-timestamp")
 class ApplicationTimestampTests {

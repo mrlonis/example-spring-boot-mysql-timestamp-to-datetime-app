@@ -31,7 +31,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Testcontainers
-class ManualTestcontainersConfigurationExampleTests {
+class ManualTestcontainersConfigurationsExampleTests {
     static final MySQLContainer<?> MY_SQL_CONTAINER;
 
     static {
