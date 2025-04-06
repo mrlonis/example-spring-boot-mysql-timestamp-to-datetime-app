@@ -2,8 +2,8 @@ package com.mrlonis.time;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import com.mrlonis.time.repository.TestEntity1Repository;
-import com.mrlonis.time.repository.TestEntity2Repository;
+import com.mrlonis.time.repository.TestEntityTimestampRepository;
+import com.mrlonis.time.repository.TestEntityZonedDateTimeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -44,17 +44,17 @@ class ManualTestcontainersConfigurationExampleTests {
     }
 
     @Autowired
-    private TestEntity1Repository testEntity1Repository;
+    private TestEntityTimestampRepository testEntityTimestampRepository;
 
     @Autowired
-    private TestEntity2Repository testEntity2Repository;
+    private TestEntityZonedDateTimeRepository testEntityZonedDateTimeRepository;
 
     @Test
     void contextLoads() {
-        var result1 = testEntity1Repository.findAll();
+        var result1 = testEntityTimestampRepository.findAll();
         assertFalse(result1.isEmpty());
 
-        var result2 = testEntity2Repository.findAll();
+        var result2 = testEntityZonedDateTimeRepository.findAll();
         assertFalse(result2.isEmpty());
     }
 }

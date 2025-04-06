@@ -15,6 +15,14 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+/**
+ * This is a test entity that is used to test the application. It uses {@link Timestamp java.sql.Timestamp} as the data
+ * type for the datetime fields.
+ *
+ * <p>This is done to show that the {@link Timestamp java.sql.Timestamp} data type is compatible with MySQL's TIMESTAMP
+ * AND DATETIME data types. This is important because the application code does not need to change when the database
+ * data type is changed from TIMESTAMP to DATETIME. Further evidence that this is a low-risk operation.
+ */
 @Getter
 @Setter
 @ToString
@@ -22,7 +30,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @AllArgsConstructor
 @Table(name = "TEST_TABLE_1")
 @Entity
-public class TestEntity1 {
+public class TestEntityTimestamp {
     @Id
     @Column(name = "ID", nullable = false, insertable = false, updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
