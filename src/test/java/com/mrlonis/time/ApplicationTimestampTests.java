@@ -56,10 +56,11 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        var newEntity = new TestEntityCalendar()
-                .setName(TEST_NAME)
-                .setCreatedUser(TEST_USER)
-                .setUpdatedUser(TEST_USER);
+        TestEntityCalendar newEntity = TestEntityCalendar.builder()
+                .name(TEST_NAME)
+                .createdUser(TEST_USER)
+                .updatedUser(TEST_USER)
+                .build();
         assertNull(newEntity.getId());
         assertNull(newEntity.getCreatedDatetime());
         assertNull(newEntity.getUpdatedDatetime());
@@ -76,7 +77,7 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        var newEntity = new TestEntityDate()
+        TestEntityDate newEntity = new TestEntityDate()
                 .setName(TEST_NAME)
                 .setCreatedUser(TEST_USER)
                 .setUpdatedUser(TEST_USER);
@@ -96,7 +97,7 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        var newEntity = new TestEntityOffsetDateTime()
+        TestEntityOffsetDateTime newEntity = new TestEntityOffsetDateTime()
                 .setName(TEST_NAME)
                 .setCreatedUser(TEST_USER)
                 .setUpdatedUser(TEST_USER);
@@ -116,7 +117,7 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        var newEntity = new TestEntityTimestamp()
+        TestEntityTimestamp newEntity = new TestEntityTimestamp()
                 .setName(TEST_NAME)
                 .setCreatedUser(TEST_USER)
                 .setUpdatedUser(TEST_USER);
@@ -136,7 +137,7 @@ class ApplicationTimestampTests {
         assertFalse(all.isEmpty());
         assertEquals(1, all.size());
 
-        var newEntity = new TestEntityZonedDateTime()
+        TestEntityZonedDateTime newEntity = new TestEntityZonedDateTime()
                 .setName(TEST_NAME)
                 .setCreatedUser(TEST_USER)
                 .setUpdatedUser(TEST_USER);

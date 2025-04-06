@@ -1,17 +1,15 @@
 package com.mrlonis.time.entity;
 
+import com.mrlonis.time.entity.base.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Calendar;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -26,30 +24,16 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "TEST_ENTITY_CALENDAR")
 @Entity
-public class TestEntityCalendar {
-    @Id
-    @Column(name = "ID", nullable = false, insertable = false, updatable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "NAME", nullable = false)
-    private String name;
-
+@NoArgsConstructor
+@SuperBuilder
+public class TestEntityCalendar extends BaseEntity {
     @Column(name = "CREATED_DATETIME", nullable = false, insertable = false, updatable = false)
     @CreationTimestamp
     private Calendar createdDatetime;
 
-    @Column(name = "CREATED_USER", nullable = false, updatable = false)
-    private String createdUser;
-
     @Column(name = "UPDATED_DATETIME", nullable = false, insertable = false)
     @UpdateTimestamp
     private Calendar updatedDatetime;
-
-    @Column(name = "UPDATED_USER", nullable = false)
-    private String updatedUser;
 }
