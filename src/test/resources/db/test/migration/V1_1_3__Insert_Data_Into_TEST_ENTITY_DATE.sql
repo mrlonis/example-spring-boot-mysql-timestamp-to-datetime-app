@@ -1,4 +1,0 @@
-INSERT INTO
-  TEST_ENTITY_DATE (NAME, CREATED_USER, UPDATED_USER)
-VALUES
-  ('Test Name 4', 'user4', 'user4');
