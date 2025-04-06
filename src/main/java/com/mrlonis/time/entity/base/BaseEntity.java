@@ -1,17 +1,15 @@
-package com.mrlonis.time.entity;
+package com.mrlonis.time.entity.base;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.sql.Timestamp;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,10 +17,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Setter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "TEST_TABLE_1")
-@Entity
-public class TestEntity1 {
+@SuperBuilder
+@MappedSuperclass
+public abstract class BaseEntity<T> {
     @Id
     @Column(name = "ID", nullable = false, insertable = false, updatable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +30,14 @@ public class TestEntity1 {
 
     @Column(name = "CREATED_DATETIME", nullable = false, insertable = false, updatable = false)
     @CreationTimestamp
-    private Timestamp createdDatetime;
+    private T createdDatetime;
 
     @Column(name = "CREATED_USER", nullable = false, updatable = false)
     private String createdUser;
 
     @Column(name = "UPDATED_DATETIME", nullable = false, insertable = false)
     @UpdateTimestamp
-    private Timestamp updatedDatetime;
+    private T updatedDatetime;
 
     @Column(name = "UPDATED_USER", nullable = false)
     private String updatedUser;

@@ -1,9 +1,12 @@
 package com.mrlonis.time;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
 
-import com.mrlonis.time.repository.TestEntity1Repository;
-import com.mrlonis.time.repository.TestEntity2Repository;
+import com.mrlonis.time.repository.TestEntityCalendarRepository;
+import com.mrlonis.time.repository.TestEntityDateRepository;
+import com.mrlonis.time.repository.TestEntityOffsetDateTimeRepository;
+import com.mrlonis.time.repository.TestEntityTimestampRepository;
+import com.mrlonis.time.repository.TestEntityZonedDateTimeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -16,10 +19,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 /**
  * This test class is used to test the application with a MySQL database using Testcontainers. It is very similar in
- * setup to the {@link ApplicationTests JodaToJavaTimeApplicationTests} class. The difference is that this test is a
- * more "manual" approach to the Testcontainers setup, while the other one uses a
- * {@link ServiceConnection @ServiceConnection} annotation to automatically configure the database connection removing
- * the need for {@link DynamicPropertySource @DynamicPropertySource} used in this class.
+ * setup to the {@link ApplicationTests ApplicationTests} class. The difference is that this test is a more "manual"
+ * approach to the Testcontainers setup, while the other one uses a {@link ServiceConnection @ServiceConnection}
+ * annotation to automatically configure the database connection removing the need for
+ * {@link DynamicPropertySource @DynamicPropertySource} used in this class.
  *
  * <p>This class will likely never be expanded and will eventually diverge from the other test class. It is here to show
  * how to set up a test with Testcontainers manually. The other test class is the preferred way to set up a test with
@@ -44,17 +47,26 @@ class ManualTestcontainersConfigurationExampleTests {
     }
 
     @Autowired
-    private TestEntity1Repository testEntity1Repository;
+    private TestEntityCalendarRepository testEntityCalendarRepository;
 
     @Autowired
-    private TestEntity2Repository testEntity2Repository;
+    private TestEntityDateRepository testEntityDateRepository;
+
+    @Autowired
+    private TestEntityOffsetDateTimeRepository testEntityOffsetDateTimeRepository;
+
+    @Autowired
+    private TestEntityTimestampRepository testEntityTimestampRepository;
+
+    @Autowired
+    private TestEntityZonedDateTimeRepository testEntityZonedDateTimeRepository;
 
     @Test
     void contextLoads() {
-        var result1 = testEntity1Repository.findAll();
-        assertFalse(result1.isEmpty());
-
-        var result2 = testEntity2Repository.findAll();
-        assertFalse(result2.isEmpty());
+        assertInitialRepositoryConditions(testEntityCalendarRepository);
+        assertInitialRepositoryConditions(testEntityDateRepository);
+        assertInitialRepositoryConditions(testEntityOffsetDateTimeRepository);
+        assertInitialRepositoryConditions(testEntityTimestampRepository);
+        assertInitialRepositoryConditions(testEntityZonedDateTimeRepository);
     }
 }

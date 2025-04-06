@@ -11,22 +11,20 @@
   * [Prerequisites](#prerequisites)
   * [Starting the Application (Local)](#starting-the-application-local)
     * [Manually Starting the Application](#manually-starting-the-application)
+  * [Troubleshooting](#troubleshooting)
+    * [Unable to Obtain Database Connection](#unable-to-obtain-database-connection)
 
 <!-- TOC -->
 
 ## Description
 
 This is a simple Spring Boot application that demonstrates how to convert a MySQL `TIMESTAMP` column to a MySQL
-`DATETIME` column. This is done on two identical tables, but with different Java data types for the datetime columns.
+`DATETIME` column. This is done on identical tables, but with different Java data types for the date-time columns.
 
-For [TestEntity1](./src/main/java/com/mrlonis/time/entity/TestEntity1.java), the `createdAt` and `updatedAt` fields are
-of type `java.sql.Timestamp`.
-
-For [TestEntity2](./src/main/java/com/mrlonis/time/entity/TestEntity2.java), the `createdAt` and `updatedAt` fields are
-of type `java.time.ZonedDateTime`.
+The classes can be found at [src/main/java/com/mrlonis/time/entity](./src/main/java/com/mrlonis/time/entity/package-info.java).
 
 What is interesting to note, is that regardless of the underlying MySQL column type, the Java data type used in the
-Spring Boot application is the same. This is because the MySQL JDBC driver handles the conversion between the two
+Spring Boot application is the same. This is because the MySQL JDBC driver handles the conversion between the
 data types.
 
 ## Motivation
@@ -80,3 +78,60 @@ file.
 
 **Note:** Notice the only difference is we are manually setting up the same docker database here, just manually
 ourselves rather than via the Spring Boot docker integration.
+
+## Troubleshooting
+
+### Unable to Obtain Database Connection
+
+If you receive an error similar to the
+following: [https://stackoverflow.com/questions/64101683/spring-boot-unable-to-communicate-with-mysql-db-in-docker-environment](https://stackoverflow.com/questions/64101683/spring-boot-unable-to-communicate-with-mysql-db-in-docker-environment),
+then you may need to edit your `/etc/hosts` file.
+
+Solution: [https://stackoverflow.com/questions/72346784/docker-is-inaccessible-on-localhost-but-works-fine-on-127-0-0-1](https://stackoverflow.com/questions/72346784/docker-is-inaccessible-on-localhost-but-works-fine-on-127-0-0-1)
+
+The issue stems from the enabling of the
+`Add the *.docker.internal names to the host's /etc/hosts file (Requires password)` [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+setting on Windows.
+
+![docker-settings-windows-highlighted-setting.png](./docs/docker-settings-windows-highlighted-setting.png)
+
+If you ever enabled this setting, you will need to disable it and **manually** edit your `/etc/hosts` file to remove the
+`*.docker.internal` entries.
+
+On windows, open the `%SystemRoot%\System32\drivers\etc\hosts` file in a text editor with elevated privileges. It will
+look something like the file below:
+
+```plain text
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+# Added by Docker Desktop
+192.168.4.126 host.docker.internal
+192.168.4.126 gateway.docker.internal
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
+# End of section
+```
+
+Notice the `# Added by Docker Desktop` section. You will need to remove this section **or** comment it out by adding a
+`# ` to each line. Unchecking the setting in Docker Desktop will **NOT** remove this section from your `/etc/hosts`
+file.
+You will need to remove it manually **AND** restart your machine for the changes to take effect.

@@ -1,4 +1,0 @@
-INSERT INTO
-  TEST_TABLE_1 (NAME, CREATED_USER, UPDATED_USER)
-VALUES
-  ('Test Name 1', 'user1', 'user1');
