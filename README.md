@@ -21,7 +21,8 @@
 This is a simple Spring Boot application that demonstrates how to convert a MySQL `TIMESTAMP` column to a MySQL
 `DATETIME` column. This is done on identical tables, but with different Java data types for the date-time columns.
 
-The classes can be found at [src/main/java/com/mrlonis/time/entity](./src/main/java/com/mrlonis/time/entity/package-info.java).
+The classes can be found
+at [src/main/java/com/mrlonis/time/entity](./src/main/java/com/mrlonis/time/entity/package-info.java).
 
 What is interesting to note, is that regardless of the underlying MySQL column type, the Java data type used in the
 Spring Boot application is the same. This is because the MySQL JDBC driver handles the conversion between the
@@ -33,14 +34,22 @@ The motivation for this project is to demonstrate how to convert a MySQL `TIMEST
 avoid the MySQL `TIMESTAMP` column type's limitation of only being able to store dates in the range of
 `1970-01-01 00:00:01 UTC` to `2038-01-19 03:14:07 UTC`.
 
+This is often called the `2038 problem` but is also called `Y2038`, `Y2K38`, or even `The Epochalypse`.
+
 This is a problem for applications that need to store dates outside of this range, such as historical data or future
 dates. The `DATETIME` column type does not have this limitation and can store dates from `1000-01-01 00:00:00` to
 `9999-12-31 23:59:59`.
+
+Sometimes, you end up working in a legacy codebase that chose to use `TIMESTAMP` for the date-time column type, long
+before you joined the team. Ideally, on a new project, you would use `DATETIME` for the date-time column type. However,
+this repository can server as not only an example of `HOW` to convert a `TIMESTAMP` column to a `DATETIME`, but also
+as proof that it can be done and is safe to do so.
 
 ## Helpful Documentation
 
 - [Improved Testcontainers Support in Spring Boot 3.1](https://spring.io/blog/2023/06/23/improved-testcontainers-support-in-spring-boot-3-1)
 - [Support for Date-Time Types in Connector/J 8.0](https://dev.mysql.com/blog-archive/support-for-date-time-types-in-connector-j-8-0/)
+- [MySQL - Date and Time Data Types](https://dev.mysql.com/doc/refman/8.4/en/date-and-time-types.html)
 
 ## Prerequisites
 
