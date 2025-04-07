@@ -41,6 +41,9 @@ public abstract class BaseEntity<T> {
     @Column(name = "CODE", columnDefinition = "char(4)")
     @Nullable private String code;
 
+    @Column(name = "DATA")
+    @Nullable private String data;
+
     /**
      * Marked with {@link Nullable} is technically null when creating a new entity prior to persisting it. This field is
      * always created for us by the database, so it is not set by the application. After creation, the ID field will be

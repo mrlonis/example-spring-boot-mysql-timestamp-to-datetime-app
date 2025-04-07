@@ -7,6 +7,7 @@ import static com.mrlonis.time.util.TestData.getTestEntityTimestamp;
 import static com.mrlonis.time.util.TestData.getTestEntityZonedDateTime;
 import static com.mrlonis.time.util.TestUtils.assertEntityCreation;
 import static com.mrlonis.time.util.TestUtils.assertInitialRepositoryConditions;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.mrlonis.time.repository.TestEntityCalendarRepository;
 import com.mrlonis.time.repository.TestEntityDateRepository;
@@ -14,6 +15,7 @@ import com.mrlonis.time.repository.TestEntityOffsetDateTimeRepository;
 import com.mrlonis.time.repository.TestEntityTimestampRepository;
 import com.mrlonis.time.repository.TestEntityZonedDateTimeRepository;
 import com.mrlonis.time.util.TestcontainersConfigurations;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,52 +29,78 @@ import org.springframework.test.context.ActiveProfiles;
  * the application code can remain completely unchanged and still work against the database regardless of what the
  * underlying datetime data type is being using in the database table.
  */
-@Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL8_0.class)
-@SpringBootTest
-@ActiveProfiles("test-timestamp")
 class ApplicationTimestampTests {
-    @Autowired
-    private TestEntityCalendarRepository testEntityCalendarRepository;
+    @SpringBootTest
+    @ActiveProfiles("test-timestamp")
+    abstract static class BaseApplicationTimestampTest {
+        @Autowired
+        private TestEntityCalendarRepository testEntityCalendarRepository;
 
-    @Autowired
-    private TestEntityDateRepository testEntityDateRepository;
+        @Autowired
+        private TestEntityDateRepository testEntityDateRepository;
 
-    @Autowired
-    private TestEntityOffsetDateTimeRepository testEntityOffsetDateTimeRepository;
+        @Autowired
+        private TestEntityOffsetDateTimeRepository testEntityOffsetDateTimeRepository;
 
-    @Autowired
-    private TestEntityTimestampRepository testEntityTimestampRepository;
+        @Autowired
+        private TestEntityTimestampRepository testEntityTimestampRepository;
 
-    @Autowired
-    private TestEntityZonedDateTimeRepository testEntityZonedDateTimeRepository;
+        @Autowired
+        private TestEntityZonedDateTimeRepository testEntityZonedDateTimeRepository;
 
-    @Test
-    void testEntityCalendar() {
-        assertInitialRepositoryConditions(testEntityCalendarRepository);
-        assertEntityCreation(getTestEntityCalendar(), testEntityCalendarRepository);
+        @Test
+        void contextLoads() {
+            assertTrue(true);
+        }
+
+        @Test
+        void testEntityCalendar() {
+            assertInitialRepositoryConditions(testEntityCalendarRepository);
+            assertEntityCreation(getTestEntityCalendar(), testEntityCalendarRepository);
+        }
+
+        @Test
+        void testEntityDate() {
+            assertInitialRepositoryConditions(testEntityDateRepository);
+            assertEntityCreation(getTestEntityDate(), testEntityDateRepository);
+        }
+
+        @Test
+        void testEntityOffsetDateTime() {
+            assertInitialRepositoryConditions(testEntityOffsetDateTimeRepository);
+            assertEntityCreation(getTestEntityOffsetDateTime(), testEntityOffsetDateTimeRepository);
+        }
+
+        @Test
+        void testEntityTimestamp() {
+            assertInitialRepositoryConditions(testEntityTimestampRepository);
+            assertEntityCreation(getTestEntityTimestamp(), testEntityTimestampRepository);
+        }
+
+        @Test
+        void testEntityZonedDateTime() {
+            assertInitialRepositoryConditions(testEntityZonedDateTimeRepository);
+            assertEntityCreation(getTestEntityZonedDateTime(), testEntityZonedDateTimeRepository);
+        }
     }
 
-    @Test
-    void testEntityDate() {
-        assertInitialRepositoryConditions(testEntityDateRepository);
-        assertEntityCreation(getTestEntityDate(), testEntityDateRepository);
-    }
+    @Nested
+    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL5_7.class)
+    class ApplicationTimestampMySQL5_7Tests extends BaseApplicationTimestampTest {}
 
-    @Test
-    void testEntityOffsetDateTime() {
-        assertInitialRepositoryConditions(testEntityOffsetDateTimeRepository);
-        assertEntityCreation(getTestEntityOffsetDateTime(), testEntityOffsetDateTimeRepository);
-    }
+    @Nested
+    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL8_0.class)
+    class ApplicationTimestampMySQL8_0Tests extends BaseApplicationTimestampTest {}
 
-    @Test
-    void testEntityTimestamp() {
-        assertInitialRepositoryConditions(testEntityTimestampRepository);
-        assertEntityCreation(getTestEntityTimestamp(), testEntityTimestampRepository);
-    }
+    @Nested
+    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL8.class)
+    class ApplicationTimestampMySQL8Tests extends BaseApplicationTimestampTest {}
 
-    @Test
-    void testEntityZonedDateTime() {
-        assertInitialRepositoryConditions(testEntityZonedDateTimeRepository);
-        assertEntityCreation(getTestEntityZonedDateTime(), testEntityZonedDateTimeRepository);
-    }
+    @Nested
+    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL_LTS.class)
+    class ApplicationTimestampMySQLLTSTests extends BaseApplicationTimestampTest {}
+
+    @Nested
+    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL_Latest.class)
+    class ApplicationTimestampMySQLLatestTests extends BaseApplicationTimestampTest {}
 }
