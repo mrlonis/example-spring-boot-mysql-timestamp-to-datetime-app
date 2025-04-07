@@ -1,6 +1,7 @@
 services:
   mysql:
-    image: "mysql:8.0"
+    image: "mysql:latest"
+    pull_policy: always
     environment:
       MYSQL_DATABASE: mydatabase
       MYSQL_PASSWORD: secret
