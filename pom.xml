@@ -28,8 +28,8 @@
     <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
     <mysql.version>9.2.0</mysql.version>
     <org.checkerframework.version>3.49.2</org.checkerframework.version>
-    <palantir-java-format.version>2.61.0</palantir-java-format.version>
-    <spotless.version>2.44.3</spotless.version>
+    <palantir-java-format.version>2.62.0</palantir-java-format.version>
+    <spotless.version>2.44.4</spotless.version>
     <spring-cloud.version>2024.0.1</spring-cloud.version>
     <versions-maven-plugin.version>2.18.0</versions-maven-plugin.version>
   </properties>
