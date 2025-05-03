@@ -34,7 +34,7 @@ class ApplicationTests {
     class ApplicationMySQL8Tests extends BaseApplicationTest {}
 
     @Nested
-    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL9.class)
+    @Import(com.mrlonis.time.util.TestcontainersConfigurations.TestcontainersConfigurationMySQL9_0.class)
     class ApplicationMySQL9Tests extends BaseApplicationTest {}
 
     @Nested
@@ -42,6 +42,6 @@ class ApplicationTests {
     class ApplicationMySQLLTSTests extends BaseApplicationTest {}
 
     @Nested
-    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL_Latest.class)
+    @Import(com.mrlonis.time.util.TestcontainersConfigurations.TestcontainersConfigurationMySQL8_2.class)
     class ApplicationMySQLLatestTests extends BaseApplicationTest {}
 }
