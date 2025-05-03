@@ -7,39 +7,31 @@
 # documentation.
 
 name: Java CI with Maven
-
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: "21"
           distribution: "temurin"
           cache: maven
-
       - name: Build with Maven
         run: ./mvnw clean verify
-
       - name: Codacy Coverage Reporter
         if: github.actor != 'dependabot[bot]'
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-      # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
         uses: advanced-security/maven-dependency-submission-action@v4.1.2 # https://github.com/advanced-security/maven-dependency-submission-action/releases

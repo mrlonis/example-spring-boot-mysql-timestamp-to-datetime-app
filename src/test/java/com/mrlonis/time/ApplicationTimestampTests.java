@@ -101,6 +101,6 @@ class ApplicationTimestampTests {
     class ApplicationTimestampMySQLLTSTests extends BaseApplicationTimestampTest {}
 
     @Nested
-    @Import(TestcontainersConfigurations.TestcontainersConfigurationMySQL_Latest.class)
+    @Import(com.mrlonis.time.util.TestcontainersConfigurations.TestcontainersConfigurationMySQL8_2.class)
     class ApplicationTimestampMySQLLatestTests extends BaseApplicationTimestampTest {}
 }

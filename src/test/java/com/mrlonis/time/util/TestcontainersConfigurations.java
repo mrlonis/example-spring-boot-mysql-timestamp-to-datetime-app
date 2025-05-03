@@ -38,11 +38,12 @@ public class TestcontainersConfigurations {
     }
 
     @TestConfiguration(proxyBeanMethods = false)
-    public static class TestcontainersConfigurationMySQL9 {
+    public static class TestcontainersConfigurationMySQL9_0 {
         @Bean
         @ServiceConnection
         MySQLContainer<?> mysqlContainer() {
-            return new MySQLContainer<>(DockerImageName.parse("mysql:9")).withImagePullPolicy(PullPolicy.alwaysPull());
+            return new MySQLContainer<>(DockerImageName.parse("mysql:9.0"))
+                    .withImagePullPolicy(PullPolicy.alwaysPull());
         }
     }
 
@@ -57,11 +58,11 @@ public class TestcontainersConfigurations {
     }
 
     @TestConfiguration(proxyBeanMethods = false)
-    public static class TestcontainersConfigurationMySQL_Latest {
+    public static class TestcontainersConfigurationMySQL8_2 {
         @Bean
         @ServiceConnection
         MySQLContainer<?> mysqlContainer() {
-            return new MySQLContainer<>(DockerImageName.parse("mysql:latest"))
+            return new MySQLContainer<>(DockerImageName.parse("mysql:8.2"))
                     .withImagePullPolicy(PullPolicy.alwaysPull());
         }
     }
